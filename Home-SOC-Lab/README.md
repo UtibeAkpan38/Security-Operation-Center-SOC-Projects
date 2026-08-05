@@ -27,4 +27,4 @@ The lab consists of the following components:
 - *Threat Intelligence:* VirusTotal Integration
 
 ### Architecture Diagram
-![SOC Home Lab Architecture](images/SOC Home Lab Architecture.jp
+![SOC Home Lab Architecture](images/SOC Home Lab Architecture.jpen
