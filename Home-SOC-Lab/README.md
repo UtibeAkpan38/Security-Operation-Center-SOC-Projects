@@ -79,12 +79,11 @@ This custom Wazuh correlation rule detects multiple failed login attempts from t
 - Mapped to *MITRE ATT&CK T1110 – Brute Force*.
 
 ### Rule Configuration
-
-> The custom Wazuh XML rule will be added here.
+![Brute Force Rule Configuration](images/brute-force-rule.png)
 
 ### Test Scenario
 
-> Screenshots showing the rule firing and the generated alert will be added here.
+![Brute Force Alert](images/brute-force-alert.png)
 
 ### Suspicious Process Execution Rule
 
@@ -98,11 +97,12 @@ This custom Wazuh correlation rule detects the execution of suspicious or unauth
 
 ### Rule Configuration
 
-> The custom Wazuh XML rule will be added here.
+![Suspicious Process Rule Configuration](images/suspicious-process-rule.png)
+
 
 ### Test Scenario
 
-> Screenshots showing the generated alert will be added here.
+![Suspicious Process Alert](images/suspicious-process-alert.png)
 
 ## Documentation
 
