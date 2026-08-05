@@ -27,4 +27,4 @@ The lab consists of the following components:
 - *Threat Intelligence:* VirusTotal Integration
 
 ### Architecture Diagram
-Architecture diagram will be added here.
+> *Architecture diagram will be added here.*
