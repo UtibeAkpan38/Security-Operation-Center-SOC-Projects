@@ -63,3 +63,16 @@ The lab consists of the following components:
 
 ### Suricata Alerts
 ![Suricata Alerts](images/suricata-alerts.png)
+
+
+## Correlation Rules
+
+This project includes two custom Wazuh correlation rules developed and tested to improve threat detection within the SOC home lab.
+
+### Brute Force Detection Rule
+
+> This section will contain the rule, explanation, and testing screenshots.
+
+### Suspicious Process Execution Rule
+
+> This section will contain the rule, explanation, and testing screenshots.
