@@ -70,9 +70,42 @@ The lab consists of the following components:
 This project includes two custom Wazuh correlation rules developed and tested to improve threat detection within the SOC home lab.
 
 ### Brute Force Detection Rule
+This custom Wazuh correlation rule detects multiple failed login attempts from the same source IP address within a short period. The rule is designed to identify brute-force attacks against SSH services.
 
-> This section will contain the rule, explanation, and testing screenshots.
+*Detection Logic*
+
+- Monitors repeated authentication failures.
+- Triggers after *5 failed login attempts within 5 minutes*.
+- Mapped to *MITRE ATT&CK T1110 – Brute Force*.
+
+### Rule Configuration
+
+> The custom Wazuh XML rule will be added here.
+
+### Test Scenario
+
+> Screenshots showing the rule firing and the generated alert will be added here.
 
 ### Suspicious Process Execution Rule
 
-> This section will contain the rule, explanation, and testing screenshots.
+This custom Wazuh correlation rule detects the execution of suspicious or unauthorized processes on monitored endpoints. It helps identify potentially malicious activity that may indicate malware execution or attacker behavior.
+
+*Detection Logic*
+
+- Monitors suspicious process creation events.
+- Detects predefined high-risk executables.
+- Generates a high-severity alert for investigation.
+
+### Rule Configuration
+
+> The custom Wazuh XML rule will be added here.
+
+### Test Scenario
+
+> Screenshots showing the generated alert will be added here.
+
+## Documentation
+
+A detailed report describing the design, implementation, configuration, testing, and results of this SOC Home Lab project is available below.
+
+- [SOC Home Lab Project Report](docs/SOC-Home-Lab-Project-Report.pdf)
