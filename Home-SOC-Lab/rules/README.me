@@ -26,10 +26,6 @@ xml
   </mitre>
 </rule>
 
-
-### Rule Configuration Screenshot
-![Brute Force Rule](../images/brute-force-rule.png)
-
 ## Test Scenario
 
 A brute-force attack was simulated by repeatedly attempting to log in to the SSH service using invalid credentials from the same source IP address. After five failed authentication attempts within five minutes, the custom correlation rule was triggered.
@@ -37,10 +33,6 @@ A brute-force attack was simulated by repeatedly attempting to log in to the SSH
 ## Result
 
 The custom Wazuh rule successfully detected the brute-force activity and generated a high-severity alert. This confirmed that the correlation logic correctly identified repeated failed login attempts originating from the same source IP address.
-
-## Alert Screenshot
-![Brute Force Alert](../images/brute-force-alert.png)
-
 
 ### Rule Configuration
 
@@ -58,8 +50,6 @@ xml
 ### Test Scenario
 
 The rule was validated by executing a binary or script from the /tmp/ directory. Wazuh successfully detected the activity and generated a high-severity alert, confirming that the custom detection rule was functioning as intended.
-
-![Suspicious Process Execution Rule](images/suspicious-process-rule.png)
 
 ![Suspicious Process Execution Alert](images/suspicious-process-alert.png)
 
