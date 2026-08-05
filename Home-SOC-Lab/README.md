@@ -44,15 +44,22 @@ The lab consists of the following components:
 - ## Screenshots
 
 - ### Lab Architecture
+- ![Lab Architecture](images/architecture.jpeg)
 
 ### Wazuh Dashboard
+![Wazuh Dashboard](images/wazuh-dashboard.png)
 
 ### Authentication Dashboard
+![Authentication Dashboard](images/authentication-dashboard.png)
 
 ### Endpoint Process Dashboard
+![Endpoint Process Dashboard](images/endpoint-process-dashboard.png)
 
 ### Network Activity Dashboard
+![Network Activity Dashboard](images/network-activity-dashboard.png)
 
 ### VirusTotal Integration
+![VirusTotal Integration](images/virustotal.png)
 
 ### Suricata Alerts
+![Suricata Alerts](images/suricata-alerts.png)
