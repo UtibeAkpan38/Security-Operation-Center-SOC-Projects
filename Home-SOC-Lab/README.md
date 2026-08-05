@@ -29,3 +29,30 @@ The lab consists of the following components:
 ### Architecture Diagram
 
 ![SOC Home Lab Architecture](images/architecture.jpeg)
+
+## Features
+
+- Centralized log collection with Wazuh
+- Endpoint monitoring for Windows and Ubuntu
+- Network intrusion detection using Suricata
+- PowerShell Script Block Logging
+- Threat Intelligence integration with VirusTotal
+- Custom Wazuh detection rules
+- Security dashboards for event visualization
+- pfSense firewall for network segmentation
+
+- ## Screenshots
+
+- ### Lab Architecture
+
+### Wazuh Dashboard
+
+### Authentication Dashboard
+
+### Endpoint Process Dashboard
+
+### Network Activity Dashboard
+
+### VirusTotal Integration
+
+### Suricata Alerts
