@@ -73,18 +73,58 @@ This architecture allowed the project to demonstrate the complete process of gen
 
 # TOOLS AND TECHNOLOGIES
 
-The following tools and technologies were used throughout the project:
 
-Tool / Technology| Purpose
-Wazuh| SIEM and endpoint security monitoring platform used for log collection, alert generation, detection rules, and security event analysis.
-Wazuh Agent| Installed on the Windows endpoint to collect and forward security telemetry to the Wazuh Manager.
-Windows 11| Monitored endpoint used as the target system for controlled adversary simulations.
-Sysmon| Provides detailed Windows endpoint telemetry for detection and investigation.
-Atomic Red Team| Used to safely simulate selected MITRE ATT&CK techniques and generate security events.
-MITRE ATT&CK| Used to categorize and map simulated adversary behaviors.
-PowerShell| Used during controlled attack simulations and analyzed as endpoint telemetry.
-Windows Event Logs| Provided security events used for detection and investigation.
-Incident Response Playbook| Provided a structured procedure for alert validation, investigation, documentation, and response.
-VirtualBox| Used to host and manage the virtual laboratory environment.
+The following tools and technologies were used throughout the project to build the detection, monitoring, simulation, investigation, and response workflow.
 
-These technologies were integrated to create an end-to-end SOC detection and response workflow.
+<table>
+  <thead>
+    <tr>
+      <th width="20%">Tool / Technology</th>
+      <th width="80%">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Wazuh</strong></td>
+      <td>SIEM and endpoint security monitoring platform used for log collection, alert generation, detection rules, and security event analysis.</td>
+    </tr>
+    <tr>
+      <td><strong>Wazuh Agent</strong></td>
+      <td>Installed on the Windows endpoint to collect and forward security telemetry to the Wazuh Manager.</td>
+    </tr>
+    <tr>
+      <td><strong>Windows 11</strong></td>
+      <td>Monitored endpoint used as the target system for controlled adversary simulations.</td>
+    </tr>
+    <tr>
+      <td><strong>Sysmon</strong></td>
+      <td>Provided detailed Windows endpoint telemetry, particularly process and system activity, for detection and investigation.</td>
+    </tr>
+    <tr>
+      <td><strong>Atomic Red Team</strong></td>
+      <td>Used to safely simulate selected MITRE ATT&amp;CK techniques and generate test security events.</td>
+    </tr>
+    <tr>
+      <td><strong>MITRE ATT&amp;CK</strong></td>
+      <td>Used as the framework for categorizing and mapping simulated adversary behaviors and detection rules.</td>
+    </tr>
+    <tr>
+      <td><strong>PowerShell</strong></td>
+      <td>Used during controlled attack simulations and analyzed as a source of endpoint telemetry.</td>
+    </tr>
+    <tr>
+      <td><strong>Windows Event Logs</strong></td>
+      <td>Provided security and system events used for detection and investigation.</td>
+    </tr>
+    <tr>
+      <td><strong>Incident Response Playbook</strong></td>
+      <td>Provided a structured procedure for validating alerts, investigating activity, documenting findings, and determining response actions.</td>
+    </tr>
+    <tr>
+      <td><strong>VirtualBox</strong></td>
+      <td>Used to host and manage the virtual laboratory environment.</td>
+    </tr>
+  </tbody>
+</table>
+
+These technologies were combined to create an end-to-end SOC detection and response workflow in which simulated adversary activity could be generated, observed, detected, investigated, and handled using a documented response procedure.
