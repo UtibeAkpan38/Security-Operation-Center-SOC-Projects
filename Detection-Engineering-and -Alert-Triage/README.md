@@ -90,6 +90,24 @@ The following tools and technologies were used throughout the project to build t
     </tr>
     <tr>
       <td><strong>Wazuh Agent</strong></td>
+
+# TECHNIQUES INVESTIGATION
+
+The project focused on selected adversary techniques from the MITRE ATT&CK framework. These techniques were chosen based on their relevance to endpoint security monitoring and their ability to generate observable telemetry within the laboratory environment.
+
+The selected techniques were simulated using Atomic Red Team and monitored through Windows Event Logs, Sysmon, and Wazuh. Custom detection rules were then developed and tested against the resulting security telemetry.
+
+| MITRE ATT&CK Technique | Technique ID | Tactic | Detection Focus |
+|---|---|---|---|
+| PowerShell | T1059.001 | Execution | Detecting suspicious PowerShell execution and related command activity. |
+| Scheduled Task/Job: Scheduled Task | T1053.005 | Persistence | Detecting the creation or modification of scheduled tasks. |
+| Brute Force | T1110 | Credential Access | Detecting repeated failed authentication attempts associated with brute-force activity. |
+| [Technique 4] | [ATT&CK ID] | [Tactic] | [Detection focus] |
+| [Technique 5] | [ATT&CK ID] | [Tactic] | [Detection focus] |
+
+The techniques were evaluated through controlled attack simulations to determine whether the generated telemetry was successfully collected by Wazuh and whether the corresponding detection rules generated the expected alerts.
+
+Where detections failed to trigger as expected, the detection logic was reviewed, troubleshooting was performed, and the rules were tuned before being tested again.
       <td>Installed on the Windows endpoint to collect and forward security telemetry to the Wazuh Manager.</td>
     </tr>
     <tr>
