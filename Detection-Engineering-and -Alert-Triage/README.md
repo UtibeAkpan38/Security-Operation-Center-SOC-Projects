@@ -93,56 +93,18 @@ The following tools and technologies were used throughout the project to build t
 
 # TECHNIQUES INVESTIGATION
 
-The project focused on selected adversary techniques from the MITRE ATT&CK framework. These techniques were chosen based on their relevance to endpoint security monitoring and their ability to generate observable telemetry within the laboratory environment.
+The project focused on five selected adversary techniques from the MITRE ATT&CK framework. These techniques were selected based on their relevance to endpoint security monitoring and their ability to generate observable security telemetry within the controlled laboratory environment.
 
-The selected techniques were simulated using Atomic Red Team and monitored through Windows Event Logs, Sysmon, and Wazuh. Custom detection rules were then developed and tested against the resulting security telemetry.
+Each technique was simulated using Atomic Red Team and monitored through Windows Event Logs, Sysmon, and Wazuh. Custom Wazuh detection rules were developed for the selected behaviors and subsequently tested through controlled attack simulations.
 
 | MITRE ATT&CK Technique | Technique ID | Tactic | Detection Focus |
 |---|---|---|---|
-| PowerShell | T1059.001 | Execution | Detecting suspicious PowerShell execution and related command activity. |
-| Scheduled Task/Job: Scheduled Task | T1053.005 | Persistence | Detecting the creation or modification of scheduled tasks. |
-| Brute Force | T1110 | Credential Access | Detecting repeated failed authentication attempts associated with brute-force activity. |
-| [Technique 4] | [ATT&CK ID] | [Tactic] | [Detection focus] |
-| [Technique 5] | [ATT&CK ID] | [Tactic] | [Detection focus] |
+| PowerShell | T1059.001 | Execution | Detecting PowerShell execution and suspicious command activity. |
+| Scheduled Task/Job: Scheduled Task | T1053.005 | Persistence | Detecting the creation and execution of scheduled tasks. |
+| SSH | T1021.004 | Lateral Movement | Detecting the use of SSH for remote service access. |
+| Account Discovery: Local Account | T1087.001 | Discovery | Detecting attempts to enumerate local user accounts. |
+| Process Discovery | T1057 | Discovery | Detecting commands and processes used to enumerate running processes. |
 
-The techniques were evaluated through controlled attack simulations to determine whether the generated telemetry was successfully collected by Wazuh and whether the corresponding detection rules generated the expected alerts.
+All five techniques were successfully simulated and generated observable activity within the laboratory environment. The resulting telemetry was collected by Wazuh and used to validate the corresponding custom detection rules.
 
-Where detections failed to trigger as expected, the detection logic was reviewed, troubleshooting was performed, and the rules were tuned before being tested again.
-      <td>Installed on the Windows endpoint to collect and forward security telemetry to the Wazuh Manager.</td>
-    </tr>
-    <tr>
-      <td><strong>Windows 11</strong></td>
-      <td>Monitored endpoint used as the target system for controlled adversary simulations.</td>
-    </tr>
-    <tr>
-      <td><strong>Sysmon</strong></td>
-      <td>Provided detailed Windows endpoint telemetry, particularly process and system activity, for detection and investigation.</td>
-    </tr>
-    <tr>
-      <td><strong>Atomic Red Team</strong></td>
-      <td>Used to safely simulate selected MITRE ATT&amp;CK techniques and generate test security events.</td>
-    </tr>
-    <tr>
-      <td><strong>MITRE ATT&amp;CK</strong></td>
-      <td>Used as the framework for categorizing and mapping simulated adversary behaviors and detection rules.</td>
-    </tr>
-    <tr>
-      <td><strong>PowerShell</strong></td>
-      <td>Used during controlled attack simulations and analyzed as a source of endpoint telemetry.</td>
-    </tr>
-    <tr>
-      <td><strong>Windows Event Logs</strong></td>
-      <td>Provided security and system events used for detection and investigation.</td>
-    </tr>
-    <tr>
-      <td><strong>Incident Response Playbook</strong></td>
-      <td>Provided a structured procedure for validating alerts, investigating activity, documenting findings, and determining response actions.</td>
-    </tr>
-    <tr>
-      <td><strong>VirtualBox</strong></td>
-      <td>Used to host and manage the virtual laboratory environment.</td>
-    </tr>
-  </tbody>
-</table>
-
-These technologies were combined to create an end-to-end SOC detection and response workflow in which simulated adversary activity could be generated, observed, detected, investigated, and handled using a documented response procedure.
+The testing process also provided an opportunity to evaluate detection accuracy, identify potential gaps, troubleshoot detection logic, and tune the rules where necessary. Following tuning and validation, the five detection scenarios successfully produced the expected security alerts.
