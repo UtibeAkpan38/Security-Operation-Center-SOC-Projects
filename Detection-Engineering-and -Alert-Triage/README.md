@@ -83,7 +83,7 @@ Sysmon| Provided detailed Windows endpoint telemetry, particularly process and s
 Atomic Red Team| Used to safely simulate selected MITRE ATT&CK techniques and generate test security events.
 MITRE ATT&CK| Used as the framework for categorizing and mapping simulated adversary behaviors and detection rules.
 PowerShell| Used during controlled attack simulations and analyzed as a source of endpoint telemetry.
-Windows Event Logs| Provided security and system events used as detection and investigation data.
+Windows Event Logs| Provided security and system events used for detection and investigation.
 Incident Response Playbook| Provided a structured procedure for validating alerts, investigating activity, documenting findings, and determining response actions.
 VirtualBox| Used to host and manage the virtual machines within the laboratory environment.
 
