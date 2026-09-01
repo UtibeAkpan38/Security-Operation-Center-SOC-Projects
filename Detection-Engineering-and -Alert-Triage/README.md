@@ -73,18 +73,18 @@ This architecture allowed the project to demonstrate the complete process of gen
 
 # TOOLS AND TECHNOLOGIES 
 
-The following tools and technologies were used throughout the project to build the detection, monitoring, simulation, investigation, and response workflow.
+The following tools and technologies were used throughout the project:
 
 Tool / Technology| Purpose
 Wazuh| SIEM and endpoint security monitoring platform used for log collection, alert generation, detection rules, and security event analysis.
 Wazuh Agent| Installed on the Windows endpoint to collect and forward security telemetry to the Wazuh Manager.
 Windows 11| Monitored endpoint used as the target system for controlled adversary simulations.
-Sysmon| Provided detailed Windows endpoint telemetry, particularly process and system activity, for detection and investigation.
-Atomic Red Team| Used to safely simulate selected MITRE ATT&CK techniques and generate test security events.
-MITRE ATT&CK| Used as the framework for categorizing and mapping simulated adversary behaviors and detection rules.
-PowerShell| Used during controlled attack simulations and analyzed as a source of endpoint telemetry.
-Windows Event Logs| Provided security and system events used for detection and investigation.
-Incident Response Playbook| Provided a structured procedure for validating alerts, investigating activity, documenting findings, and determining response actions.
-VirtualBox| Used to host and manage the virtual machines within the laboratory environment.
+Sysmon| Provides detailed Windows endpoint telemetry for detection and investigation.
+Atomic Red Team| Used to safely simulate selected MITRE ATT&CK techniques and generate security events.
+MITRE ATT&CK| Used to categorize and map simulated adversary behaviors.
+PowerShell| Used during controlled attack simulations and analyzed as endpoint telemetry.
+Windows Event Logs| Provided security events used for detection and investigation.
+Incident Response Playbook| Provided a structured procedure for alert validation, investigation, documentation, and response.
+VirtualBox| Used to host and manage the virtual laboratory environment.
 
-These technologies were combined to create an end-to-end detection and response workflow in which simulated adversary activity could be generated, observed, detected, investigated, and handled using a documented response procedure.
+These technologies were integrated to create an end-to-end SOC detection and response workflow.
