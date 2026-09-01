@@ -71,7 +71,7 @@ Atomic Red Team → Windows Endpoint → Sysmon / Windows Event Logs → Wazuh A
 
 This architecture allowed the project to demonstrate the complete process of generating controlled adversary activity, collecting security telemetry, detecting suspicious behavior, investigating alerts, and following a structured response procedure.
 
-TOOLS AND TECHNOLOGIES
+# TOOLS AND TECHNOLOGIES
 
 The following tools and technologies were used throughout the project:
 
