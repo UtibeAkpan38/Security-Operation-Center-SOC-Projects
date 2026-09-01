@@ -108,4 +108,4 @@ This custom Wazuh correlation rule detects the execution of suspicious or unauth
 
 A detailed report describing the design, implementation, configuration, testing, and results of this SOC Home Lab project is available below.
 
-- [SOC Home Lab Project Report](docs/SOC-Home-Lab-Project-Report.pdf)
+[SOC Home Lab Project Report](docs/SOC%20Home%20Lab%20Project%20Report.pdf)
