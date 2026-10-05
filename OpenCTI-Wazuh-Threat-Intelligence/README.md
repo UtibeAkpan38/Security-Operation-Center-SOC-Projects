@@ -217,3 +217,135 @@ The completed feed configuration established OpenCTI as the central repository f
 The intelligence collected during this phase provided the data required for the next phase: building the custom **Wazuh-to-OpenCTI enrichment integration**.
 
 
+## Phase Three — Wazuh-to-OpenCTI Integration
+
+The third phase focused on building the connection between **Wazuh** and **OpenCTI** so that security events detected by Wazuh could be enriched with threat-intelligence context.
+
+A custom Python integration, `custom-opencti.py`, was developed to act as the bridge between the two platforms.
+
+### Integration Workflow
+
+When a relevant Wazuh event is generated, the integration:
+
+1. Receives the Wazuh alert.
+2. Extracts the relevant indicator from the event.
+3. Queries OpenCTI through its **GraphQL API**.
+4. Checks whether the indicator exists in the available threat intelligence.
+5. Retrieves relevant intelligence when a match is found.
+6. Returns the enrichment information for processing by Wazuh.
+
+The resulting workflow is:
+
+```text
+Wazuh Security Event
+        ↓
+Indicator Extraction
+        ↓
+custom-opencti.py
+        ↓
+OpenCTI GraphQL API
+        ↓
+Indicator Matching
+        ↓
+Threat Intelligence Enrichment
+        ↓
+Wazuh Processing
+```
+
+### Wazuh Integration Configuration
+
+The integration was configured to process relevant event groups, including network connection and SSH-related activity.
+
+The implementation also required the integration to use the **`custom-opencti`** naming convention because Wazuh requires custom integrations to use the appropriate custom prefix.
+
+The integration was configured to support the relevant event groups:
+
+```text
+sysmon_event3
+network_connect
+ssh_brute_force
+sshd
+```
+
+### Enrichment Data
+
+When an indicator matched intelligence in OpenCTI, the returned context could include information such as:
+
+- Threat score
+- Confidence level
+- Labels
+- Malware context
+- MITRE ATT&CK information
+
+This transformed a basic security event into a more context-rich event that could provide additional investigative value to a SOC analyst.
+
+### Telemetry Adjustment
+
+The original implementation was designed around Windows **Sysmon Event ID 3** network telemetry. However, resource limitations and the laboratory environment led to the primary final validation being performed with Linux **`auditd` `network_connect`** events.
+
+The Sysmon integration path was retained as part of the implementation, while `auditd` provided the practical validation path used for the final end-to-end test.
+
+### Phase Three Outcome
+
+At the end of this phase, the Wazuh environment was capable of sending relevant security-event information through the custom integration to OpenCTI for indicator matching and threat-intelligence enrichment.
+
+The next step was to ensure that the returned enrichment could be processed into a usable Wazuh alert.
+
+## Phase Four — Wazuh Enrichment Rules & Alert Processing
+
+The fourth phase focused on processing the threat-intelligence information returned by the OpenCTI integration and converting it into a usable Wazuh alert.
+
+During testing, the enrichment returned through the integration's Unix socket did not automatically appear as a dashboard alert. Additional Wazuh rules were therefore required to process the returned data.
+
+### Custom Enrichment Rules
+
+Custom Wazuh rules **100150–100152** were created to process the OpenCTI enrichment results.
+
+The final high-severity enrichment rule was:
+
+```text
+Rule ID: 100152
+Level: 12
+```
+
+This allowed an OpenCTI indicator match to be represented as a high-severity Wazuh alert rather than remaining only as integration output.
+
+### Integration Debugging
+
+`integrator.debug=2` was enabled during troubleshooting to provide additional visibility into the communication between Wazuh and the custom integration.
+
+This helped confirm that the integration was receiving relevant events and returning enrichment information, while also exposing the distinction between successful enrichment through the integration and successful presentation of that enrichment as a Wazuh dashboard alert.
+
+### Enriched Wazuh Alert
+
+![CTI-Enriched Wazuh Alert](screenshots/ACTUAL-WAZUH-ENRICHED-ALERT-SCREENSHOT.png)
+
+*Figure: Wazuh Dashboard displaying the threat-intelligence-enriched security alert.*
+
+The dashboard result confirmed that the OpenCTI enrichment had been processed into a Wazuh alert, providing the analyst with additional threat-intelligence context alongside the original security event.
+
+### Alert Processing Flow
+
+```text
+Security Event
+      ↓
+Wazuh Detection
+      ↓
+custom-opencti.py
+      ↓
+OpenCTI GraphQL Query
+      ↓
+Indicator Match
+      ↓
+Threat Intelligence Returned
+      ↓
+Custom Wazuh Enrichment Rules
+      ↓
+High-Severity Enriched Alert
+```
+
+### Phase Four Outcome
+
+This phase completed the processing layer required to turn OpenCTI enrichment into an actionable Wazuh alert.
+
+The final validation confirmed the complete workflow from security-event detection through OpenCTI enrichment to the resulting Wazuh Dashboard alert.
