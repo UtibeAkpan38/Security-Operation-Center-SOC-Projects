@@ -513,7 +513,8 @@ Future development of the project could include:
 
 The complete technical report for this project is available below:
 
-📄 **[OpenCTI Threat Intelligence Report](documentation/OpenCTI_Threat_Intelligence_Report.pdf)**
+📄 **[OpenCTI Threat Intelligence Report](documentation/OpenCTI-Threat-Intelligence-Report.pdf)**
 
 The report contains the detailed implementation process, configuration, testing, troubleshooting, validation results, and supporting technical evidence for the project.
+
 
