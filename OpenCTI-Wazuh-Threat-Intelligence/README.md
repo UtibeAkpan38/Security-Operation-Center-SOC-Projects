@@ -349,3 +349,68 @@ High-Severity Enriched Alert
 This phase completed the processing layer required to turn OpenCTI enrichment into an actionable Wazuh alert.
 
 The final validation confirmed the complete workflow from security-event detection through OpenCTI enrichment to the resulting Wazuh Dashboard alert.
+
+## End-to-End Validation
+
+The final phase validated the complete threat-intelligence enrichment workflow using a known malicious indicator obtained from **URLhaus**.
+
+The indicator used for validation was:
+
+```text
+123.11.125.96:40919/bin.sh
+```
+
+The indicator was processed through the completed Wazuh-to-OpenCTI workflow to confirm that a security event could be detected, matched against threat intelligence, enriched, and presented as a high-severity Wazuh alert.
+
+### Validation Workflow
+
+The validation followed the complete chain:
+
+```text
+Malicious Indicator
+        ↓
+Security Event Generated
+        ↓
+Wazuh Detection
+        ↓
+Indicator Extracted
+        ↓
+OpenCTI GraphQL Query
+        ↓
+URLhaus Intelligence Match
+        ↓
+Threat Context Returned
+        ↓
+Wazuh Rule 100152
+        ↓
+Level 12 Enriched Alert
+```
+
+### OpenCTI Intelligence Result
+
+The matched indicator returned threat-intelligence context from OpenCTI, including:
+
+- **Threat Score:** 80
+- **Confidence:** 100
+- **Labels:** Mozi
+- **Context:** Financial-sector relevant
+- **Additional context:** ELF/MIPS
+
+This demonstrated that the integration was not simply identifying an IP address, but was successfully adding contextual intelligence to the detected activity.
+
+### Final Validation Result
+
+The enriched event was processed by Wazuh **rule 100152 at level 12**, confirming that the threat-intelligence match could be translated into a high-severity SOC alert.
+
+The result demonstrated the project's intended end-to-end capability:
+
+> **Detect → Extract → Query → Match → Enrich → Alert**
+
+The completed workflow showed how OpenCTI can extend Wazuh detection by providing additional intelligence that helps an analyst understand the potential significance of an observed indicator.
+
+### Phase Five Outcome
+
+The end-to-end validation successfully demonstrated the core objective of the project: integrating external threat intelligence into the Wazuh detection workflow and presenting the resulting context as an enriched SOC alert.
+
+
+![CTI-Validation](screenshots/ACTUAL-WAZUH-ENRICHED-ALERT-VALIDATION.png)
