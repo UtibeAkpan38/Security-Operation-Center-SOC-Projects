@@ -215,3 +215,5 @@ ThreatFox was considered as an additional intelligence source during the project
 The completed feed configuration established OpenCTI as the central repository for the project's external threat intelligence.
 
 The intelligence collected during this phase provided the data required for the next phase: building the custom **Wazuh-to-OpenCTI enrichment integration**.
+
+
