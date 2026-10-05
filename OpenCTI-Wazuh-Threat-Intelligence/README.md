@@ -414,3 +414,105 @@ The end-to-end validation successfully demonstrated the core objective of the pr
 
 
 ![CTI-Validation](screenshots/ACTUAL-WAZUH-ENRICHED-ALERT-VALIDATION.png)
+
+## Challenges & Troubleshooting
+
+Several technical challenges were encountered during the implementation. These issues affected system performance, telemetry collection, integration behavior, and alert processing.
+
+### 1. Resource Constraints
+
+The largest challenge was limited system memory. Running Wazuh, OpenCTI, and its supporting services together placed significant pressure on the available RAM.
+
+Elasticsearch/OpenSearch became unhealthy when its memory requirements increased, while system swap usage also increased.
+
+**Resolution:** The project was executed in stages rather than attempting to run the entire environment continuously at the same time. Resource-intensive components were started only when required for a specific phase of testing.
+
+### 2. Telemetry Source Change
+
+The original implementation path used Windows Sysmon Event ID 3 for network connection telemetry. Due to resource constraints in the laboratory environment, the final primary validation was performed using Linux `auditd` `network_connect` events.
+
+**Resolution:** The integration was adapted to process the available Linux network telemetry while retaining the Sysmon path for the broader implementation.
+
+### 3. Custom Integration Naming
+
+The initial integration naming caused compatibility issues because Wazuh requires custom integrations to follow its custom integration naming convention.
+
+**Resolution:** The integration was configured as:
+
+```text
+custom-opencti
+```
+
+This allowed Wazuh to recognize and execute the custom integration correctly.
+
+### 4. Integration Output vs Dashboard Alert
+
+The OpenCTI enrichment was successfully returned through the integration's Unix socket, but the returned information did not automatically appear as a normal Wazuh Dashboard alert.
+
+**Resolution:** Additional custom Wazuh rules, **100150–100152**, were created to process the enrichment output and generate a corresponding alert. Rule **100152** was configured as the high-severity enrichment rule.
+
+### 5. Auditd Rule Persistence
+
+The `auditd` network monitoring configuration required attention because manually created audit rules were not automatically persistent across system restarts.
+
+**Resolution:** The audit configuration was tested and adjusted as part of the validation process so that the required `network_connect` telemetry could be generated reliably during testing.
+
+### 6. Wazuh Rule Hierarchy
+
+The custom network monitoring rule needed to be positioned correctly within the Wazuh rule hierarchy. The custom rule was configured as a child of the relevant built-in audit rule.
+
+This ensured that the expected `network_connect` events could be matched and processed by the custom detection logic.
+
+### 7. SSH Brute-Force Correlation
+
+The custom SSH brute-force rule did not reliably trigger during testing, even after repeated failed authentication attempts.
+
+Because the rule could not be relied upon for final validation, the project used another validated SSH-related detection path for enrichment testing.
+
+**Resolution:** SSH remote-service activity associated with **T1021.004** was successfully used as an alternative enrichment scenario, while the brute-force rule limitation was documented rather than presenting it as a successful result.
+
+### 8. Manager Startup Delay
+
+The additional services and resource requirements also affected Wazuh Manager startup behavior.
+
+**Resolution:** The manager service startup timeout was increased to allow sufficient time for the environment to initialize under the available resources.
+
+### Overall Lesson
+
+The troubleshooting process demonstrated that successful threat-intelligence integration depends not only on the intelligence platform and integration code, but also on **resource planning, telemetry reliability, rule hierarchy, alert-processing behavior, and careful validation of each stage of the pipeline**.
+
+
+## Recommendations & Next Steps
+
+Based on the implementation and the challenges encountered, the following improvements are recommended for future development of the project.
+
+### Recommendations
+
+- **Increase available system resources** or move OpenCTI to a dedicated virtual machine to reduce resource contention between Wazuh and OpenCTI.
+- **Improve Elasticsearch/OpenSearch resource allocation** to provide more stable OpenCTI operation.
+- **Restore continuous Windows Sysmon testing** when sufficient resources are available, allowing the original Windows network-telemetry path to be used more consistently.
+- **Improve auditd persistence** so required network-monitoring rules remain active after system restarts.
+- **Review and improve the SSH brute-force detection rule** so repeated failed authentication attempts can be detected reliably.
+- **Expand the threat-intelligence sources** by adding feeds such as ThreatFox when additional system resources are available.
+- **Improve enrichment persistence and alert context** so threat-intelligence results can be retained and presented consistently for analyst investigation.
+
+### Next Steps
+
+Future development of the project could include:
+
+1. Moving OpenCTI to a dedicated, higher-resource environment.
+2. Running Wazuh and OpenCTI continuously together rather than sequentially.
+3. Expanding the number of threat-intelligence feeds connected to OpenCTI.
+4. Adding more indicator types, including domains, hashes, and URLs, to the enrichment workflow.
+5. Expanding the custom Wazuh rules to support additional threat-intelligence scenarios.
+6. Improving automated enrichment and analyst-facing context within Wazuh.
+7. Testing the integration against a wider range of known malicious indicators.
+8. Further developing the project into a more persistent and production-like SOC threat-intelligence pipeline.
+
+## Project Documentation
+
+The complete technical report for this project is available below:
+
+📄 **[OpenCTI Threat Intelligence Report](documentation/OpenCTI_Threat_Intelligence_Report.pdf)**
+
+The report contains the detailed implementation process, configuration, testing, troubleshooting, validation results, and supporting technical evidence for the project.
