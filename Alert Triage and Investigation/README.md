@@ -617,4 +617,4 @@ Across the ten investigations, I performed alert triage, reviewed security logs,
 
 The report of the ten alert triage and investigation exercises is available in the **Alerts Triage and Investigation Report** PDF.
 
-**[View the Complete Alerts Triage and Investigation Report (PDF)](reports/Alerts%20Triage%20and%20Investigation%20Report.pdf)**
+**[View the Complete Alerts Triage and Investigation Report (PDF)](report/Alerts%20Triage%20and%20Investigation%20Report.pdf)**
