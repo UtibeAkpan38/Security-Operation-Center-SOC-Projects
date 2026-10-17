@@ -398,4 +398,4 @@ Overall, the project established a practical foundation for securing cloud workl
 
 The full report documents the project’s objectives, implementation, security configurations, testing, findings, and recommendations, providing a detailed record of the work completed.
 
-**Full Project Report:** [Cloud Security Report - Team 2](Cloud%20Security%20Report%20-%20Team%202.pdf)
+**Full Project Report:** [Cloud Security Report - Team 2](Cloud-Security-Report-Team.pdf)
