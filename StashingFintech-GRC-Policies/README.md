@@ -105,7 +105,7 @@ I checked SF-POL-003 and SF-POL-007 against our writing guide, the company profi
 
 - **Compliance skills.** I learned the parts of a policy and why each one exists. I learned to give every rule a role, an action and a deadline. I also learned to map a policy to a standard and to check that different policies agree with each other.
 - **Review skills.** I learned to base every review comment on a source and to take review comments on my own work without defensiveness.
-- **Communication skills.** Preparing the presentation forced me to explain every rule in plain words and to say where each number came from. That work helped me understand all ten policies and not only my own.
+- **Communication skills.** Preparing and presenting the work forced me to explain every rule in plain words and to say where each number came from. That work helped me understand all ten policies and not only my own.
 
 ## Read the full report
 
